@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="pku.lesson_evaluator.SignIn">
 
     <include layout="@layout/toolbar"/>
@@ -11,73 +12,76 @@
     <ScrollView
         android:id="@+id/scroll_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Please Sign In"
-                android:textSize="50dp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="50dp" />
 
             <EditText
                 android:id="@+id/getstudentid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入学号"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:hint="请输入学号" />
 
             <EditText
                 android:id="@+id/getid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入id"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:hint="请输入id" />
+
             <EditText
                 android:id="@+id/getpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入密码"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:hint="请输入密码" />
+
             <EditText
                 android:id="@+id/getsecondpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请重复密码"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:hint="请重复密码" />
+
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/register"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="register"
-                    android:layout_margin="10dp"/>
+                    android:text="register" />
+
                 <Button
                     android:id="@+id/reset"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="reset"
-                    android:layout_margin="10dp"/>
+                    android:text="reset" />
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
