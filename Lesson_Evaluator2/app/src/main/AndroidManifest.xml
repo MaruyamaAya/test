@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pku.lesson_evaluator">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,9 +22,10 @@
         </activity>
         <activity
             android:name=".SignIn"
-            android:label="注册"></activity>
+            android:label="注册" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Class"></activity>
+        <activity android:name=".Class" />
+        <activity android:name=".Talking"></activity>
     </application>
 
 </manifest>

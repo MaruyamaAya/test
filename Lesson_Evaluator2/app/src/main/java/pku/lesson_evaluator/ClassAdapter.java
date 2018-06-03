@@ -1,7 +1,7 @@
 package pku.lesson_evaluator;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +46,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
             switch (view.getId()){
                 case R.id.course_detail:
                     //按照特定方式锁定
-                    mListener.onCourseDetailClick(className.getText().toString()+"/"+classTeacher.getText().toString());
+                    mListener.onCourseDetailClick(className.getText().toString());
                     break;
                 case R.id.score:
                     mListener.onScoreClick(className.getText().toString()+"/"+classTeacher.getText().toString());
@@ -67,11 +67,13 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.class_item,parent,false);
-        ViewHolder holder=new ViewHolder(view, new mViewHolderClicks() {
+        final View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.class_item,parent,false);
+        final ViewHolder holder=new ViewHolder(view, new mViewHolderClicks() {
             @Override
             public void onCourseDetailClick(String uid) {
-
+                Intent intent=new Intent(view.getContext(),Class.class);
+                intent.putExtra("Class_Name",uid);
+                view.getContext().startActivity(intent);
             }
 
             @Override
@@ -125,11 +127,6 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 mFilteredClassList = (List<Class_item>) filterResults.values;
-                for(int i=0;i<mFilteredClassList.size();++i){
-                    Log.d("ClassAdapter",mFilteredClassList.get(i).getClassName()+"\n"
-                            + mFilteredClassList.get(i).getClassTeacher()+"\n"
-                            +mFilteredClassList.get(i).getClassScore()+"\n");
-                }
                 notifyDataSetChanged();
             }
         };
