@@ -1,17 +1,22 @@
 package pku.lesson_evaluator;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder>{
+public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> implements Filterable{
     
     private List<Class_item> mClassList;
+    private List<Class_item> mFilteredClassList;
     
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView className;
@@ -57,6 +62,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder>{
 
     public ClassAdapter(List<Class_item> class_items){
         mClassList=class_items;
+        mFilteredClassList=class_items;
     }
 
     @Override
@@ -83,15 +89,55 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Class_item classItem=mClassList.get(position);
+        Class_item classItem=mFilteredClassList.get(position);
         holder.className.setText(classItem.getClassName());
         holder.classTeacher.setText(classItem.getClassTeacher());
         holder.classScore.setText(classItem.getClassScore());
     }
 
     @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    mFilteredClassList = mClassList;
+                } else {
+                    List<Class_item> filteredList = new ArrayList<>();
+                    for (Class_item classItem : mClassList) {
+                        if (classItem.getClassName().toLowerCase().contains(charString)
+                                || classItem.getClassName().toUpperCase().contains(charString)
+                                || classItem.getClassScore().toLowerCase().contains(charString)
+                                || classItem.getClassScore().toUpperCase().contains(charString)
+                                || classItem.getClassTeacher().toUpperCase().contains(charString)
+                                || classItem.getClassTeacher().toLowerCase().contains(charString)) {
+                            filteredList.add(classItem);
+                        }
+                    }
+                    mFilteredClassList = filteredList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mFilteredClassList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mFilteredClassList = (List<Class_item>) filterResults.values;
+                for(int i=0;i<mFilteredClassList.size();++i){
+                    Log.d("ClassAdapter",mFilteredClassList.get(i).getClassName()+"\n"
+                            + mFilteredClassList.get(i).getClassTeacher()+"\n"
+                            +mFilteredClassList.get(i).getClassScore()+"\n");
+                }
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    @Override
     public int getItemCount() {
-        return mClassList.size();
+        return mFilteredClassList.size();
     }
 
     private interface mViewHolderClicks{
