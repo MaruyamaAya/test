@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initClassItems(){
         //写入初始化（需要具体数据）
-        String[] a=new String[]{"gao deng shu xue","gao deng dai shu"};
-        String[] b=new String[]{"shi yi","gao xia"};
-        String[] c=new String[]{"4.3","4.5"};
+        String[] a=new String[]{"高等数学","高等代数","计算机系统导论","Java程序设计","算法设计与分析","程序设计实习"};
+        String[] b=new String[]{"史逸","高峡","陆俊林","黄骏","蒋婷婷","郭炜"};
+        String[] c=new String[]{"4.3","4.5","4.5","5.0","4.5","4.0"};
         for(int i=0;i<a.length;++i){
             classItemList.add(new Class_item(a[i],b[i],c[i]));
         }

@@ -12,8 +12,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        View view=View.inflate(this,R.layout.toolbar,null);
-        android.support.v7.widget.Toolbar toolbar=view.findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar=findViewById(R.id.toolbar);
         toolbar.setTitle("登录");
         setSupportActionBar(toolbar);
         Button signin=(Button)findViewById(R.id.signin);

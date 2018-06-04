@@ -73,7 +73,12 @@ public class Talking extends AppCompatActivity implements View.OnClickListener{
 
     private void initTalking(){
         //根据uid在服务器上请求信息
-
+        String[] a=new String[]{"hym","lzm"};
+        String[] b=new String[]{"2018/01/19 12:20","2018/06/04 13:00"};
+        String[] c=new String[]{"我真是爱死java程序设计了","黄骏老师真好"};
+        for(int i=0;i<a.length;++i){
+            talkingItemList.add(new Talking_item(a[i],b[i],c[i]));
+        }
     }
 
     private void getUid(){
