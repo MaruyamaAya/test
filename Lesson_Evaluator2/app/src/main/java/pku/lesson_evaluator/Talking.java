@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,13 @@ import java.util.List;
 public class Talking extends AppCompatActivity implements View.OnClickListener{
 
     private List<Talking_item> talkingItemList=new ArrayList<>();
+    private TextView ClassName;
+    private TextView ClassTeacher;
     private EditText addWord;
     private Button sendWord;
     private String uid;
+    private String className;
+    private String classTeacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,10 @@ public class Talking extends AppCompatActivity implements View.OnClickListener{
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         getUid();
+        ClassName=findViewById(R.id.class_name);
+        ClassTeacher=findViewById(R.id.class_teacher);
+        ClassName.setText(className);
+        ClassTeacher.setText(classTeacher);
         initTalking();
         RecyclerView recyclerView=findViewById(R.id.talking_recycler_view);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
@@ -58,16 +67,21 @@ public class Talking extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.send_word:
-
+                //发送信息
         }
     }
 
     private void initTalking(){
+        //根据uid在服务器上请求信息
 
     }
 
     private void getUid(){
         Intent intent=getIntent();
         //获得uid
+        uid=intent.getStringExtra("UID");
+        String [] temp=uid.split("/");
+        className=temp[0];
+        classTeacher=temp[1];
     }
 }

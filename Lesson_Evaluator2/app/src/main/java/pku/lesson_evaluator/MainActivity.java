@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         String[] a=new String[]{"gao deng shu xue","gao deng dai shu"};
         String[] b=new String[]{"shi yi","gao xia"};
         String[] c=new String[]{"4.3","4.5"};
-        for(int i=0;i<2;++i){
+        for(int i=0;i<a.length;++i){
             classItemList.add(new Class_item(a[i],b[i],c[i]));
         }
     }

@@ -72,18 +72,22 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
             @Override
             public void onCourseDetailClick(String uid) {
                 Intent intent=new Intent(view.getContext(),Class.class);
-                intent.putExtra("Class_Name",uid);
+                intent.putExtra("UID",uid);
                 view.getContext().startActivity(intent);
             }
 
             @Override
             public void onScoreClick(String uid) {
-
+                Intent intent=new Intent(view.getContext(),Score.class);
+                intent.putExtra("UID",uid);
+                view.getContext().startActivity(intent);
             }
 
             @Override
             public void onTalkingClick(String uid) {
-
+                Intent intent=new Intent(view.getContext(),Talking.class);
+                intent.putExtra("UID",uid);
+                view.getContext().startActivity(intent);
             }
         });
         return holder;

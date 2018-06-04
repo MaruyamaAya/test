@@ -64,7 +64,7 @@ public class Class extends AppCompatActivity {
 
     private void getUid(){
         Intent intent=getIntent();
-        uid=intent.getStringExtra("Class_Name");
+        uid=intent.getStringExtra("UID");
     }
 
     private void getContentText(){

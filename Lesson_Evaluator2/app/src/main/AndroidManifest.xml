@@ -25,7 +25,8 @@
             android:label="注册" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Class" />
-        <activity android:name=".Talking"></activity>
+        <activity android:name=".Talking" />
+        <activity android:name=".Score"></activity>
     </application>
 
 </manifest>
